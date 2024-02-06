@@ -1,0 +1,36 @@
+services:
+  server:
+    build: ./backend
+    command: python -u app.py
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./backend:/app
+    links:
+      - db
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+  webapp: 
+    build: ./frontend
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - HOST_URL=http://192.168.0.10:5000
+    ports: 
+      - "8000:3000"
+    volumes:
+      - './frontend:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    links:
+      - server
+    
+  db:
+    image: mongo:latest
+    hostname: test_shop
+    environment:
+      - MONGO_INITDB_DATABASE=animal_db
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - 27017:27017
+  
