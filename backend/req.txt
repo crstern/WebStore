@@ -1,19 +1,3 @@
-blinker==1.7.0
-click==8.1.7
-dnspython==2.5.0
-email-validator==2.1.0.post1
-Flask==3.0.1
-flask-marshmallow==1.1.0
-flask-mongoengine @ git+https://github.com/idoshr/flask-mongoengine.git@e244408acf440c4208f7ddcd6e5d819cb472e4da
-Flask-WTF==1.2.1
-idna==3.6
-itsdangerous==2.1.2
-Jinja2==3.1.3
-MarkupSafe==2.1.5
-marshmallow==3.20.2
-mongoengine==0.27.0
-packaging==23.2
-pymongo==4.6.1
-Werkzeug==3.0.1
-WTForms==3.1.2
-flask-cors==3.0.10
+fastapi
+pydantic
+uvicorn

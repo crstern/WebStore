@@ -1,20 +1,11 @@
-FROM python:3.10-alpine
+FROM python:3.9
 
-ADD . /app
-WORKDIR /app
+WORKDIR /code
 
-RUN apk --update --upgrade add --no-cache  git gcc musl-dev jpeg-dev zlib-dev libffi-dev cairo-dev pango-dev gdk-pixbuf-dev
-RUN python -m pip install --upgrade pip
+COPY ./req.txt /code/req.txt
 
-# Install any dependencies
-RUN pip install -r req.txt
+RUN pip install --no-cache-dir --upgrade -r /code/req.txt
 
-# Specify the Flask environment port
-ENV PORT 5000
+COPY ./app /code/app
 
-# By default, listen on port 5000
-EXPOSE 5000
-
-COPY . .
-
-CMD ["python", "app.py"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
