@@ -29,9 +29,5 @@ services:
     db:
         image: mongo:latest
         hostname: shop
-        environment:
-            - MONGO_INITDB_DATABASE=store_db
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=pass
         ports:
             - 27017:27017
