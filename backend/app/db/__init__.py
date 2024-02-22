@@ -9,8 +9,9 @@ from typing_extensions import Annotated
 
 config = dotenv_values(".env")
 
-config = {"MONGODB_URL": "mongodb://db:27017"}
-client = motor.motor_asyncio.AsyncIOMotorClient(config["MONGODB_URL"], username="root", password="pass")
+client = motor.motor_asyncio.AsyncIOMotorClient(config["MONGODB_URL"],
+                                                username=config["MONGODB_USERNAME"], 
+                                                password=config["MONGODB_PASSWORD"])
 db = client.get_database("store")
 products_collection = db.get_collection("products")
 
