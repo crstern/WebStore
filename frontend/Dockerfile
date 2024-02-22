@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM node:18-alpine
 # set working directory
 WORKDIR /usr/src/app
